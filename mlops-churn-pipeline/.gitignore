@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# DVC data
+data/raw/
+data/processed/
+
+# MLflow
+mlruns/
+
+# Airflow
+airflow.db
+logs/
+
+# IDE
+.vscode/
+
+# Environment
+.env
+
+# OS
+.DS_Store
+Thumbs.db
