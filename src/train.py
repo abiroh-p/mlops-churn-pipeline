@@ -12,18 +12,13 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 
-DATA_PATH = "data/raw/telco_churn.csv"
+DATA_PATH = "data/processed/telco_churn_clean.csv"
 MLFLOW_TRACKING_URI = "http://localhost:5000"
 EXPERIMENT_NAME = "churn-prediction"
 
 
 def load_data(path: str) -> pd.DataFrame:
-    df = pd.read_csv(path)
-    df["TotalCharges"] = pd.to_numeric(df["TotalCharges"], errors="coerce")
-    df = df.dropna(subset=["TotalCharges"])
-    df = df.drop(columns=["customerID"])
-    df["Churn"] = (df["Churn"] == "Yes").astype(int)
-    return df
+    return pd.read_csv(path)
 
 
 def build_pipeline(numeric_cols, categorical_cols, max_iter: int) -> Pipeline:
