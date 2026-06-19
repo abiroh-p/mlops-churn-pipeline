@@ -4,10 +4,6 @@ __pycache__/
 .venv/
 venv/
 
-# DVC data
-data/raw/
-data/processed/
-
 # MLflow
 mlruns/
 
