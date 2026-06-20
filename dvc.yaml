@@ -1,1 +1,15 @@
-# YAML configuration
+stages:
+  validate:
+    cmd: python src/validate.py
+    deps:
+      - src/validate.py
+      - data/raw/telco_churn.csv
+    outs:
+      - data/processed/telco_churn_clean.csv
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/processed/telco_churn_clean.csv
+    outs: []

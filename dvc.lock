@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  validate:
+    cmd: python src/validate.py
+    deps:
+    - path: data/raw/telco_churn.csv
+      hash: md5
+      md5: 3b0bfab28a8101b4e4fdd08025a5c235
+      size: 970457
+    - path: src/validate.py
+      hash: md5
+      md5: 70fb89ec6e65240e2b0e06958c29d6b1
+      size: 2344
+    outs:
+    - path: data/processed/telco_churn_clean.csv
+      hash: md5
+      md5: e21309e4c8d69f591170476eeeadf765
+      size: 883900
