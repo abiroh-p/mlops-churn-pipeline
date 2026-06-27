@@ -16,3 +16,14 @@ stages:
       hash: md5
       md5: e21309e4c8d69f591170476eeeadf765
       size: 883900
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/telco_churn_clean.csv
+      hash: md5
+      md5: e21309e4c8d69f591170476eeeadf765
+      size: 883900
+    - path: src/train.py
+      hash: md5
+      md5: cd60662a1ada33e6c7ecc20d702f8ed4
+      size: 2996
