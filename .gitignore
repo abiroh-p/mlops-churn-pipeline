@@ -1,3 +1,4 @@
+cat > .gitignore << 'EOF'
 # Python
 __pycache__/
 *.pyc
@@ -20,3 +21,8 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+
+# DVC pipeline outputs
+data/processed/*
+!data/processed/*.dvc
+EOF
