@@ -47,6 +47,19 @@ with DAG(
             "AWS_SECRET_ACCESS_KEY": "minioadmin",
             "MLFLOW_TRACKING_URI": "http://mlflow:5000",
         },
+
+        
     )
 
-    validate_task >> train_task
+    register_task = BashOperator(
+        task_id="register_model",
+        bash_command=f"cd {PROJECT_DIR} && python src/register_model.py",
+        env={
+            "MLFLOW_TRACKING_URI": "http://mlflow:5000",
+            "AWS_ACCESS_KEY_ID": "minioadmin",
+            "AWS_SECRET_ACCESS_KEY": "minioadmin",
+            "MLFLOW_S3_ENDPOINT_URL": "http://minio:9000",
+        },
+    )
+
+    validate_task >> train_task >> register_task
