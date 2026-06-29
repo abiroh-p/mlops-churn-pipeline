@@ -4,6 +4,7 @@ Pass 2: Train a churn classifier with a sklearn Pipeline, tracked in MLflow.
 
 import mlflow
 import mlflow.sklearn
+import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
@@ -13,7 +14,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 
 DATA_PATH = "data/processed/telco_churn_clean.csv"
-MLFLOW_TRACKING_URI = "http://localhost:5000"
+MLFLOW_TRACKING_URI = os.environ.get("MLFLOW_TRACKING_URI", "http://localhost:5000")
 EXPERIMENT_NAME = "churn-prediction"
 
 
