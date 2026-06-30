@@ -9,9 +9,10 @@ MODEL_URI = "models:/churn-classifier/Production"
 
 mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 model = mlflow.sklearn.load_model(MODEL_URI)
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI(title="Churn Prediction API")
-
+Instrumentator().instrument(app).expose(app)
 
 class CustomerFeatures(BaseModel):
     gender: str
